@@ -1,0 +1,13 @@
+{
+    "project_name": "Django Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "author_name": "Your Name",
+    "description": "A short description of the project",
+    "license": ["MIT", "None"],
+    "version": "1.0.0",
+    "postgres_user": "user",
+    "postgres_password": "password",
+    "_copy_without_render": [
+        "markdown_tools/*"
+    ]
+}

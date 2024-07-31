@@ -159,7 +159,7 @@ class ModelUpdateTests(TestCase):
         update_fields = ["created_at"]
         data = {"created_at": timezone.now() - timedelta(days=1)}
 
-        with patch("styleguide_example.common.services.timezone.now") as now:
+        with patch("{{cookiecutter.project_slug}}.common.services.timezone.now") as now:
             # We will pass created_at, to trigger actual model update
             updated_instance, has_updated = model_update(
                 instance=instance, fields=update_fields, data=data, auto_updated_at=False
@@ -178,7 +178,7 @@ class ModelUpdateTests(TestCase):
         update_fields = ["name"]
         data = {"name": "HackSoft"}
 
-        with patch("styleguide_example.common.services.timezone.now") as now:
+        with patch("{{cookiecutter.project_slug}}.common.services.timezone.now") as now:
             updated_instance, has_updated = model_update(instance=instance, fields=update_fields, data=data)
 
             now.assert_not_called()

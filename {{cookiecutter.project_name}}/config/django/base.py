@@ -17,17 +17,17 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 LOCAL_APPS = [
-    "styleguide_example.core.apps.CoreConfig",
-    "styleguide_example.common.apps.CommonConfig",
-    "styleguide_example.tasks.apps.TasksConfig",
-    "styleguide_example.api.apps.ApiConfig",
-    "styleguide_example.users.apps.UsersConfig",
-    "styleguide_example.errors.apps.ErrorsConfig",
-    "styleguide_example.testing_examples.apps.TestingExamplesConfig",
-    "styleguide_example.integrations.apps.IntegrationsConfig",
-    "styleguide_example.files.apps.FilesConfig",
-    "styleguide_example.emails.apps.EmailsConfig",
-    "styleguide_example.blog_examples.apps.BlogExamplesConfig",
+    "{{cookiecutter.project_slug}}.core.apps.CoreConfig",
+    "{{cookiecutter.project_slug}}.common.apps.CommonConfig",
+    "{{cookiecutter.project_slug}}.tasks.apps.TasksConfig",
+    "{{cookiecutter.project_slug}}.api.apps.ApiConfig",
+    "{{cookiecutter.project_slug}}.users.apps.UsersConfig",
+    "{{cookiecutter.project_slug}}.errors.apps.ErrorsConfig",
+    "{{cookiecutter.project_slug}}.testing_examples.apps.TestingExamplesConfig",
+    "{{cookiecutter.project_slug}}.integrations.apps.IntegrationsConfig",
+    "{{cookiecutter.project_slug}}.files.apps.FilesConfig",
+    "{{cookiecutter.project_slug}}.emails.apps.EmailsConfig",
+    "{{cookiecutter.project_slug}}.blog_examples.apps.BlogExamplesConfig",
 ]
 
 THIRD_PARTY_APPS = [
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     # If you want to have required 2FA for the Django admin
     # Uncomment the line below and comment out the default admin
-    # "styleguide_example.custom_admin.apps.CustomAdminConfig",
+    # "{{cookiecutter.project_slug}}.custom_admin.apps.CustomAdminConfig",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -94,7 +94,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///styleguide_example"),
+    "default": env.db("DATABASE_URL", default="postgres:///{{cookiecutter.project_slug}}"),
 }
 
 if os.environ.get("GITHUB_WORKFLOW"):
@@ -151,8 +151,8 @@ STATIC_URL = "/static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "styleguide_example.api.exception_handlers.drf_default_with_modifications_exception_handler",
-    # 'EXCEPTION_HANDLER': 'styleguide_example.api.exception_handlers.hacksoft_proposed_exception_handler',
+    "EXCEPTION_HANDLER": "{{cookiecutter.project_slug}}.api.exception_handlers.drf_default_with_modifications_exception_handler",
+    # 'EXCEPTION_HANDLER': '{{cookiecutter.project_slug}}.api.exception_handlers.hacksoft_proposed_exception_handler',
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
     "DEFAULT_AUTHENTICATION_CLASSES": [],
 }
